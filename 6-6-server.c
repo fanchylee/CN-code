@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
 		fd = open(buf, O_RDONLY);              /* open the file to be sent back */ 
 		if(fd < 0)fatal("open failed"); 
   
-		while(1){ 
+		while(1){
 			bytes = read(fd, buf, BUF_SIZE); /* read from file */ 
 			if (bytes <= 0) break;            /* check for end of file */ 
 			write(sa, buf, bytes);            /* write bytes to socket */ 
