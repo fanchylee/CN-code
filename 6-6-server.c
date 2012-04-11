@@ -1,11 +1,12 @@
+#include <string.h>
+
 #include <sys/types.h>                        /* This is the server code */ 
 #include <sys/fcntl.h> 
 #include <sys/socket.h> 
 #include <netinet/in.h> 
 #include <netdb.h> 
 
-#define SERVER_PORT 12345                     /* arbitrary, but client & server must 
-￼agree */ 
+#define SERVER_PORT 12345                     /* arbitrary, but client & server must agree */ 
 #define BUF_SIZE 4096                         /* block transfer size */ 
 #define QUEUE_SIZE 10 
 

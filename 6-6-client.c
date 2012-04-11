@@ -1,10 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include <sys/types.h> 
 #include <sys/socket.h> 
 #include <netinet/in.h> 
 #include <netdb.h> 
 
-#define SERVER_PORT 12345                      /* arbitrary, but client & server must 
-￼agree */ 
+#define SERVER_PORT 12345                      /* arbitrary, but client & server must agree */ 
 #define BUF_SIZE 4096                          /* block transfer size */ 
 
 int main(int argc, char **argv) 
@@ -19,7 +22,7 @@ int main(int argc, char **argv)
  if (!h) fatal("gethostbyname failed"); 
 
  s = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP); 
- i f (s <0) fatal("socket"); 
+ if (s <0) fatal("socket"); 
  memset(&channel, 0, sizeof(channel)); 
  channel.sin_family= AF_INET; 
  memcpy(&channel.sin_addr.s_addr, h->h_addr, h->h_length); 
@@ -31,7 +34,7 @@ int main(int argc, char **argv)
  /* Connection is now established. Send file name including 0 byte at end. */ 
  write(s, argv[2], strlen(argv[2])+1); 
 
- / * Go get the file and write it to standard output. */ 
+ /* Go get the file and write it to standard output. */ 
  while (1) { 
      bytes = read(s, buf, BUF_SIZE);             /* read from socket */ 
      if (bytes <= 0) exit(0);                    /* check for end of file */ 
@@ -39,8 +42,4 @@ int main(int argc, char **argv)
  } 
 } 
 
-fatal(char *string) 
-{ 
- printf("%s\n", string); 
- exit(1); 
-}  
+  
