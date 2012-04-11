@@ -5,4 +5,4 @@
 %.o:%.c
 	gcc -c -o $@ $<
 clean:
-	rm -f *.o
+	rm -f *.o 6-6-client 6-6-server
