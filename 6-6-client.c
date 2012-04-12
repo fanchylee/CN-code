@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <sys/types.h> 
 #include <sys/socket.h> 
@@ -38,6 +39,6 @@ int main(int argc, char **argv)
 	while(1){ 
 		bytes = read(s, buf, BUF_SIZE);             /* read from socket */ 
 		if(bytes <= 0)exit(0);                    /* check for end of file */ 
-		write(1, buf, bytes);                       /* write to standard output */ 
+		write(STDOUT_FILENO, buf, bytes);                       /* write to standard output */ 
 	}
 }
