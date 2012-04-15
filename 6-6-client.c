@@ -8,7 +8,7 @@
 #include <netinet/in.h> 
 #include <netdb.h> 
 
-#define SERVER_PORT 12345                      /* arbitrary, but client & server must agree */ 
+#define SERVER_PORT 13                    /* arbitrary, but client & server must agree */ 
 #define BUF_SIZE 4096                          /* block transfer size */ 
 
 int main(int argc, char **argv) 
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	write(s, argv[2], strlen(argv[2])+1); 
 
 	/* Go get the file and write it to standard output. */ 
-	while(1){ 
+	while(1){
 		bytes = read(s, buf, BUF_SIZE);             /* read from socket */ 
 		if(bytes <= 0)exit(0);                    /* check for end of file */ 
 		write(STDOUT_FILENO, buf, bytes);                       /* write to standard output */ 
